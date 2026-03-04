@@ -1,0 +1,525 @@
+/* =========================================================
+   Study2Gether — Design System (CSS)
+   - Gradiente oficial no header
+   - Cards brancos
+   - Botões azul/roxo
+   - Badges de status
+   - Fundo neutro EdTech
+   - Dark mode automático
+   ========================================================= */
+
+/* ---------- 🎨 Variáveis globais (design system) ---------- */
+:root{
+  /* Brand */
+  --brand-blue: #3A7BFF;
+  --brand-green: #3ED1A5;
+  --brand-purple: #6A4DFF;
+
+  /* UI */
+  --bg: #F7F9FC;
+  --surface: #FFFFFF;
+  --border: #E3E8EF;
+  --text: #1F2A37;
+  --text-2: #6B7280;
+
+  /* Estados */
+  --success: #22C55E;
+  --error: #EF4444;
+  --warning: #F59E0B;
+  --info: var(--brand-blue);
+
+  /* Tipografia */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  --fs-1: clamp(1.35rem, 1.1rem + 0.8vw, 1.9rem);
+  --fs-2: 1.15rem;
+  --fs-3: 1rem;
+  --fs-4: 0.925rem;
+  --lh: 1.5;
+
+  /* Layout */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 12px 30px rgba(16, 24, 40, 0.10);
+  --shadow-sm: 0 8px 20px rgba(16, 24, 40, 0.08);
+
+  /* Espaçamentos */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Gradiente oficial (marca) */
+  --grad-brand: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-purple) 55%, var(--brand-green) 110%);
+
+  /* Botões */
+  --btn-primary: var(--brand-blue);
+  --btn-primary-hover: #2E69E6;
+  --btn-accent: var(--brand-purple);
+  --btn-accent-hover: #5B3EF2;
+
+  /* Inputs */
+  --focus-ring: 0 0 0 4px rgba(58, 123, 255, .25);
+
+  color-scheme: light;
+}
+
+/* ---------- 🌙 Dark mode automático ---------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0B1220;
+    --surface: #0F1A2B;
+    --border: rgba(227, 232, 239, 0.14);
+    --text: #E6ECF5;
+    --text-2: #A9B4C4;
+
+    --shadow: 0 18px 40px rgba(0,0,0,0.35);
+    --shadow-sm: 0 10px 24px rgba(0,0,0,0.25);
+
+    --btn-primary-hover: #4C8BFF;
+    --btn-accent-hover: #7A63FF;
+
+    --focus-ring: 0 0 0 4px rgba(106, 77, 255, .30);
+
+    color-scheme: dark;
+  }
+}
+
+/* ---------- Base / Reset leve ---------- */
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: var(--lh);
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(58,123,255,.10), transparent 55%),
+              radial-gradient(1000px 520px at 90% 10%, rgba(106,77,255,.10), transparent 60%),
+              var(--bg);
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+a:hover{ text-decoration: underline; }
+
+img{ max-width: 100%; display: block; }
+
+:focus-visible{
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 10px;
+}
+
+/* ---------- Acessibilidade: Skip link ---------- */
+a[href="#conteudo"]{
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-150%);
+  transition: transform .2s ease;
+  z-index: 999;
+}
+a[href="#conteudo"]:focus{
+  transform: translateY(0%);
+}
+
+/* ---------- 🧱 Base estrutural (layout) ---------- */
+/* Grid geral: header full / aside + main */
+body{
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "aside  main"
+    "footer footer";
+  gap: var(--space-5);
+  padding: var(--space-5);
+}
+
+/* Header principal (o primeiro <header> da página) */
+body > header{
+  grid-area: header;
+  background: var(--grad-brand);
+  border-radius: calc(var(--radius) + 2px);
+  color: white;
+  box-shadow: var(--shadow);
+  padding: var(--space-5);
+  position: relative;
+  overflow: hidden;
+}
+body > header::before{
+  content:"";
+  position:absolute;
+  inset:-80px -40px auto auto;
+  width: 280px;
+  height: 280px;
+  background: rgba(255,255,255,.14);
+  border-radius: 999px;
+  filter: blur(2px);
+}
+body > header h1{
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 2.1rem);
+  letter-spacing: .2px;
+}
+body > header nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+body > header nav a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+  text-decoration: none;
+  transition: transform .12s ease, background .12s ease;
+}
+body > header nav a:hover{
+  background: rgba(255,255,255,.20);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Sidebar */
+aside{
+  grid-area: aside;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+aside h3{
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-2);
+}
+aside h4{
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--fs-3);
+  color: var(--text);
+}
+aside p{
+  margin: var(--space-2) 0;
+  color: var(--text-2);
+  font-size: var(--fs-4);
+}
+aside dl{
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 0;
+}
+aside dt{ color: var(--text); }
+aside dd{
+  margin: 0;
+  color: var(--text-2);
+  padding-left: 2px;
+}
+aside nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+aside nav a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+}
+aside nav a:hover{
+  background: color-mix(in srgb, var(--surface) 78%, var(--brand-blue));
+  text-decoration: none;
+}
+
+/* Main */
+main{
+  grid-area: main;
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* Rodapé */
+footer{
+  grid-area: footer;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+footer p{ margin: 0 0 var(--space-3); color: var(--text-2); }
+footer nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+footer nav a{
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+footer nav a:hover{ text-decoration: none; }
+
+/* Responsivo */
+@media (max-width: 980px){
+  body{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+  body > header nav ul{ gap: 8px; }
+}
+
+/* ---------- 📝 Tipografia / títulos de seções ---------- */
+section > header{
+  margin-bottom: var(--space-3);
+}
+section > header h2{
+  margin: 0;
+  font-size: var(--fs-1);
+}
+h4{ margin: 0 0 var(--space-2); }
+small{ color: var(--text-2); }
+
+/* ---------- 🃏 Cards (fieldset, article, blocos) ---------- */
+fieldset{
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  margin: 0;
+}
+legend{
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+  color: var(--text);
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+/* Artigos viram cards */
+article{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+  margin: 0 0 var(--space-3);
+}
+
+/* Avisa: seu HTML tem border inline em alguns articles; isso não dá pra “apagar” sem editar.
+   Mas a gente deixa o resto com cara de card e melhora o conjunto. */
+article h4{
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
+}
+article ul{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-2);
+}
+article details{
+  margin-top: var(--space-2);
+  border-top: 1px dashed var(--border);
+  padding-top: var(--space-2);
+}
+summary{
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ---------- Form / Inputs ---------- */
+form{
+  display: grid;
+  gap: 10px;
+}
+label{
+  font-weight: 650;
+  color: var(--text);
+  font-size: var(--fs-4);
+}
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+  color: var(--text);
+  outline: none;
+  transition: border-color .12s ease, box-shadow .12s ease, transform .12s ease;
+}
+textarea{ resize: vertical; min-height: 120px; }
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color: color-mix(in srgb, var(--brand-blue) 65%, var(--border));
+  box-shadow: var(--focus-ring);
+}
+
+hr{
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-4) 0;
+}
+
+/* ---------- 🔘 Botões (azul/roxo) ---------- */
+button,
+input[type="submit"]{
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-weight: 750;
+  padding: 11px 14px;
+  border-radius: 12px;
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  box-shadow: 0 8px 18px rgba(16,24,40,0.10);
+}
+
+/* Padrão: azul (primário) */
+button{
+  background: var(--btn-primary);
+  color: white;
+}
+button:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+button:active{ transform: translateY(0px); }
+
+/* Botão "secundário" para casos comuns (ex.: salvar / ver replay) */
+button[type="button"]{
+  background: color-mix(in srgb, var(--surface) 70%, var(--brand-purple));
+  color: white;
+}
+button[type="button"]:hover{ filter: brightness(1.02); }
+
+/* Botões dentro do header ficam “glass” */
+body > header button,
+body > header a.button{
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.20);
+}
+
+/* Botões full width (você já usa style inline width:100%) — fica bonito com espaçamento */
+button[style*="width: 100%"],
+button[style*="width:100%"]{
+  justify-content: center;
+}
+
+/* ---------- 🚦 Estados / Badges ---------- */
+/* Pega seus spans com background inline e dá cara de badge */
+span[style*="background"]{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  font-weight: 800;
+  letter-spacing: .2px;
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* Se você começar a usar classes depois, já fica pronto: */
+.badge{ 
+  display: inline-flex; align-items:center; gap:8px;
+  padding: 6px 10px; border-radius: 999px; font-weight: 800;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+}
+.badge--success{ background: color-mix(in srgb, var(--success) 16%, var(--surface)); border-color: color-mix(in srgb, var(--success) 35%, var(--border)); }
+.badge--error{ background: color-mix(in srgb, var(--error) 14%, var(--surface)); border-color: color-mix(in srgb, var(--error) 35%, var(--border)); }
+.badge--warning{ background: color-mix(in srgb, var(--warning) 16%, var(--surface)); border-color: color-mix(in srgb, var(--warning) 40%, var(--border)); }
+.badge--info{ background: color-mix(in srgb, var(--info) 16%, var(--surface)); border-color: color-mix(in srgb, var(--info) 40%, var(--border)); }
+
+/* ---------- Tabela do calendário ---------- */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+caption{
+  padding: 12px;
+  font-weight: 850;
+  color: var(--text);
+}
+th, td{
+  border: 1px solid var(--border);
+  padding: 10px;
+}
+thead th{
+  background: color-mix(in srgb, var(--surface) 85%, var(--bg));
+  color: var(--text);
+}
+
+/* ---------- Micro-ajustes em áreas com estilos inline ---------- */
+/* Caixas com fundo escuro (#333) ficam mais “SaaS” */
+div[style*="background-color: #333"]{
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Listas sem marcador (você usa inline) — deixa espaçamento uniforme */
+ul[style*="list-style: none"] li{
+  padding: 8px 0;
+}
+
+/* ---------- Melhor leitura geral ---------- */
+p{ color: var(--text-2); }
+strong{ color: var(--text); }
+time{ color: var(--text); }
+
+/* ---------- Seleção de texto ---------- */
+::selection{
+  background: rgba(58,123,255,.25);
+}
+
+/* ---------- Preferência por menos animação ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; scroll-behavior: auto !important; }
+}
