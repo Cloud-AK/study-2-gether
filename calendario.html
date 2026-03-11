@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Study2Gether | Biblioteca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.claro.css">
+</head>
+
+<body>
+  <a href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <h1 class="brand">
+      <span class="brand__study">Study</span><span class="brand__rest">2Gether</span>
+    </h1>
+
+    <nav aria-label="Menu Principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="salas.html">Salas</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside>
+    <section aria-labelledby="dados-perfil">
+      <h4 id="dados-perfil">Nome</h4>
+      <dl>
+        <dt><strong></strong></dt><dd></dd>
+        <dt><strong></strong></dt><dd></dd>
+        <dt><strong></strong></dt><dd></dd>
+        <dt><strong></strong></dt><dd></dd>
+      </dl>
+    </section>
+
+    <p>Nível: | Pontos:</p>
+    <p><strong></strong></p>
+  </aside>
+
+  <main id="conteudo">
+    <section id="biblioteca" class="library">
+      <div class="section-head">
+        <h2>Biblioteca de Materiais</h2>
+      </div>
+
+      <fieldset class="library-filter">
+        <legend>Filtrar Conteúdo</legend>
+
+        <form class="library-form">
+          <label for="busca">Palavra-chave:</label>
+          <input
+            type="search"
+            id="busca"
+            placeholder="Ex: Integrais, Python"
+          >
+
+          <label for="materia">Disciplina:</label>
+          <select id="materia">
+            <option>Todas</option>
+            <option>Português</option>
+            <option>Matemática</option>
+            <option>Física</option>
+            <option>Biologia</option>
+          </select>
+
+          <label for="nivel">Nível:</label>
+          <select id="nivel">
+            <option>Básico</option>
+            <option>Intermediário</option>
+            <option>Avançado</option>
+          </select>
+
+          <button type="submit">Buscar</button>
+        </form>
+      </fieldset>
+
+      <fieldset class="library-list">
+        <legend>Materiais Disponíveis</legend>
+
+        <article class="material-card">
+          <h4>Resumo de Funções</h4>
+          <ul class="material-meta">
+            <li><strong>Disciplina:</strong> Matemática</li>
+            <li><strong>Tipo:</strong> PDF</li>
+            <li><strong>Ano:</strong> 2026</li>
+          </ul>
+          <button type="button">Baixar</button>
+        </article>
+
+        <article class="material-card">
+          <h4>Mapa Mental – Revolução Francesa</h4>
+          <ul class="material-meta">
+            <li><strong>Disciplina:</strong> História</li>
+            <li><strong>Tipo:</strong> Mapa Mental</li>
+            <li><strong>Ano:</strong> 2025</li>
+          </ul>
+          <button type="button">Baixar</button>
+        </article>
+      </fieldset>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Study2Gether - Todos os direitos reservados.</p>
+
+    <nav aria-label="Links Úteis">
+      <ul>
+        <li><a href="#privacidade">Política de Privacidade</a></li>
+        <li><a href="#termos">Termos de Uso</a></li>
+        <li><a href="#baixar-dados">Baixar meus dados</a></li>
+        <li><a href="#configuracoes">Configurações</a></li>
+        <li><a href="#excluir-conta">Excluir minha conta</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>

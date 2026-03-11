@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Study2Gether | Comunidade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comunidade Study2Gether: dúvidas, respostas e colaboração.">
+
+  <link rel="stylesheet" href="style.claro.css">
+</head>
+
+<body>
+  <a href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <h1 class="brand">
+      <span class="brand__study">Study</span><span class="brand__rest">2Gether</span>
+    </h1>
+
+    <nav aria-label="Menu Principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="biblioteca.html">Biblioteca</a></li>
+        <li><a href="salas.html">Salas</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside>
+  <h3>Meu Perfil</h3>
+
+  <details class="profile-menu">
+    <summary class="profile-button">
+      <div class="profile-button__avatar">
+        <img src="https://via.placeholder.com/48" alt="Foto de perfil de Cloud">
+      </div>
+
+      <div class="profile-button__info">
+        <strong>Cloud</strong>
+        <span>Ausente</span>
+      </div>
+    </summary>
+
+    <nav aria-label="Menu do perfil" class="profile-dropdown">
+      <ul>
+        <li><a href="perfil.html">Visualizar perfil</a></li>
+        <li><a href="editar-perfil.html">Editar perfil</a></li>
+      </ul>
+    </nav>
+  </details>
+</aside>
+
+  <main id="conteudo">
+    <section id="duvidas" class="community">
+      <div class="section-head">
+        <h2>Dúvidas da Comunidade</h2>
+      </div>
+
+      <div class="qa-layout">
+
+        <!-- Coluna esquerda: postar dúvida -->
+        <div class="qa-compose">
+          <form action="/enviar-duvida" method="POST" enctype="multipart/form-data" class="qa-form">
+            <fieldset>
+              <legend>Nova Pergunta</legend>
+
+              <label for="titulo">Título da Dúvida:</label>
+              <input type="text" id="titulo" name="titulo" placeholder="Ex: Como resolver essa integral?" required>
+
+              <label for="materia">Disciplina:</label>
+              <select id="materia" name="materia" required>
+                <option value="">Selecione a matéria.</option>
+                <option value="portugues">Português</option>
+                <option value="matematica">Matemática</option>
+                <option value="fisica">Física</option>
+                <option value="biologia">Biologia</option>
+                <option value="historia">História</option>
+                <option value="geografia">Geografia</option>
+                <option value="quimica">Química</option>
+                <option value="producao-texto">Produção de Texto</option>
+                <option value="literatura">Literatura</option>
+                <option value="artes">Artes</option>
+              </select>
+
+              <label for="tags">Tags:</label>
+              <input type="text" id="tags" name="tags" placeholder="Ex: #calculo #derivadas #limites">
+
+              <label for="descricao">Explique sua dúvida:</label>
+              <textarea id="descricao" name="descricao" rows="4" required placeholder="Cole seu código ou descreva o problema."></textarea>
+
+              <label for="arquivo">Anexar foto do caderno:</label>
+              <input type="file" id="arquivo" name="arquivo" accept="image/*">
+
+              <button type="submit" class="btn-block">Publicar Dúvida</button>
+            </fieldset>
+          </form>
+        </div>
+
+        <!-- Coluna direita: feed de dúvidas -->
+        <div class="qa-feed">
+          <fieldset class="qa-feed-card">
+            <legend>Dúvidas Recentes</legend>
+
+            <div class="qa-controls">
+              <label for="ordenacao">Ordenar por:</label>
+              <select id="ordenacao" name="ordenacao">
+                <option value="relevantes">Mais relevantes</option>
+                <option value="votadas">Mais votadas</option>
+                <option value="recentes">Mais recentes</option>
+              </select>
+            </div>
+
+            <article class="qa-post">
+              <div class="qa-post-top">
+                <span class="badge badge--open">EM ABERTO</span>
+              </div>
+
+              <h4 class="qa-title">Dúvida sobre pipipipi</h4>
+              <p class="qa-meta">Postado por <strong>Pessoa_Dev</strong> em x matéria</p>
+
+              <div class="qa-stats">
+                <span>x Votos</span>
+                <span>y Respostas</span>
+                <span class="badge badge--warning">Endossado por Mentor</span>
+              </div>
+
+              <div class="qa-actions">
+                <button type="button" aria-label="Dar upvote">▲ Upvote</button>
+                <button type="button" aria-label="Dar downvote">▼ Downvote</button>
+              </div>
+
+              <button type="button" class="qa-cta">Ajudar este colega</button>
+            </article>
+
+            <article class="qa-post">
+              <div class="qa-post-top">
+                <span class="badge badge--solved">RESOLVIDA</span>
+              </div>
+
+              <h4 class="qa-title">Outra dúvida sobre mimimi</h4>
+              <p class="qa-meta">Postado por <strong>Pessoa_Aluno</strong> em y matéria</p>
+
+              <div class="qa-stats">
+                <span>x Votos</span>
+                <span>y Respostas</span>
+                <span class="badge badge--mentor">Expert Verificado</span>
+              </div>
+
+              <div class="qa-actions">
+                <button type="button" aria-label="Dar upvote">▲ Upvote</button>
+                <button type="button" aria-label="Dar downvote">▼ Downvote</button>
+              </div>
+
+              <button type="button" class="qa-cta">Ver Resposta</button>
+            </article>
+          </fieldset>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Study2Gether - Todos os direitos reservados.</p>
+
+    <nav aria-label="Links Úteis">
+      <ul>
+        <li><a href="#privacidade">Política de Privacidade</a></li>
+        <li><a href="#termos">Termos de Uso</a></li>
+        <li><a href="#baixar-dados">Baixar meus dados</a></li>
+        <li><a href="#configuracoes">Configurações</a></li>
+        <li><a href="#excluir-conta">Excluir minha conta</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
