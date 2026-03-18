@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study2Gether | Perfil</title>
+  <meta name="description" content="Perfil do usuário no Study2Gether.">
   <link rel="stylesheet" href="style.claro.css">
 </head>
+
 <body>
   <a href="#conteudo">Pular para o conteúdo</a>
 
   <header>
-    <h1>Study2Gether</h1>
+    <h1 class="brand">
+      <span class="brand__study">Study</span><span class="brand__rest">2Gether</span>
+    </h1>
+
     <nav aria-label="Menu Principal">
       <ul>
         <li><a href="index.html">Início</a></li>
@@ -22,32 +27,105 @@
     </nav>
   </header>
 
+  <aside>
+    <div class="sidebar-content">
+      <h3>Meu Perfil</h3>
+
+      <details class="profile-menu">
+        <summary class="profile-button">
+          <div class="profile-button__avatar">
+            <img src="https://via.placeholder.com/48" alt="Foto de perfil de Cloud">
+          </div>
+
+          <div class="profile-button__info">
+            <strong>Cloud</strong>
+            <span>Focado</span>
+          </div>
+        </summary>
+
+        <nav aria-label="Menu do perfil" class="profile-dropdown">
+          <ul>
+            <li><a href="perfil.html">Visualizar perfil</a></li>
+            <li><a href="editar-perfil.html">Editar perfil</a></li>
+          </ul>
+        </nav>
+      </details>
+
+      <h4>Navegação rápida</h4>
+      <nav aria-label="Atalhos laterais">
+        <ul>
+          <li><a href="biblioteca.html">Ver materiais</a></li>
+          <li><a href="salas.html">Entrar em salas</a></li>
+          <li><a href="comunidade.html">Tirar dúvidas</a></li>
+          <li><a href="calendario.html">Ver calendário</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="sidebar-user">
+      <p><strong>Nível:</strong> 4</p>
+      <p><strong>Pontos:</strong> 1280</p>
+    </div>
+  </aside>
+
   <main id="conteudo">
-    <section>
-      <h2>Meu Perfil</h2>
+    <section class="profile-page">
+      <div class="section-head">
+        <h2>Meu Perfil</h2>
+        <p>Visualize suas informações e progresso.</p>
+      </div>
 
-      <dl>
-        <dt><strong>Nome:</strong></dt>
-        <dd>Cloud</dd>
+      <fieldset class="profile-card">
+        <legend>Informações do usuário</legend>
 
-        <dt><strong>Status:</strong></dt>
-        <dd>Ausente</dd>
+        <dl class="profile-details">
+          <dt><strong>Nome:</strong></dt>
+          <dd>Cloud</dd>
 
-        <dt><strong>Instituição:</strong></dt>
-        <dd>—</dd>
+          <dt><strong>Status:</strong></dt>
+          <dd>Focado</dd>
 
-        <dt><strong>Curso:</strong></dt>
-        <dd>—</dd>
+          <dt><strong>Instituição:</strong></dt>
+          <dd>—</dd>
 
-        <dt><strong>Semestre:</strong></dt>
-        <dd>—</dd>
+          <dt><strong>Curso:</strong></dt>
+          <dd>—</dd>
 
-        <dt><strong>Interesses:</strong></dt>
-        <dd>—</dd>
-      </dl>
+          <dt><strong>Semestre:</strong></dt>
+          <dd>—</dd>
 
-      <p><a href="editar-perfil.html">Editar perfil</a></p>
+          <dt><strong>Interesses:</strong></dt>
+          <dd>Programação, Matemática</dd>
+        </dl>
+
+        <p>
+          <a href="editar-perfil.html" class="home-link-button">Editar perfil</a>
+        </p>
+      </fieldset>
+
+      <fieldset class="profile-card">
+        <legend>Progresso</legend>
+
+        <p><strong>Horas estudadas:</strong> 32h</p>
+        <p><strong>Tarefas concluídas:</strong> 18</p>
+        <p><strong>Sequência de dias:</strong> 5 dias</p>
+      </fieldset>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2026 Study2Gether - Todos os direitos reservados.</p>
+
+    <nav aria-label="Links Úteis">
+      <ul>
+        <li><a href="#privacidade">Política de Privacidade</a></li>
+        <li><a href="#termos">Termos de Uso</a></li>
+        <li><a href="#baixar-dados">Baixar meus dados</a></li>
+        <li><a href="#configuracoes">Configurações</a></li>
+        <li><a href="#excluir-conta">Excluir minha conta</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </footer>
 </body>
 </html>
