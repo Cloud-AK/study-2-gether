@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Salas de estudo virtuais do Study2Gether.">
 
+  <meta name="theme-color" content="#4A90E2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <link rel="stylesheet" href="style.claro.css">
 </head>
 
-<body>
+<body class="page-home">
   <a href="#conteudo">Pular para o conteúdo</a>
 
   <header>
@@ -19,7 +23,7 @@
 
     <nav aria-label="Menu Principal">
       <ul>
-       <li><a href="index.html">Início</a></li>
+        <li><a href="index.html">Início</a></li>
         <li><a href="biblioteca.html">Biblioteca</a></li>
         <li><a href="salas.html">Salas</a></li>
         <li><a href="comunidade.html">Comunidade</a></li>
@@ -29,18 +33,31 @@
   </header>
 
   <aside>
-    <section aria-labelledby="dados-perfil">
-      <h4 id="dados-perfil">Nome</h4>
-      <dl>
-        <dt><strong></strong></dt><dd></dd>
-        <dt><strong></strong></dt><dd></dd>
-        <dt><strong></strong></dt><dd></dd>
-        <dt><strong></strong></dt><dd></dd>
-      </dl>
-    </section>
+    <div class="sidebar-content">
+      <h3>Meu Perfil</h3>
+    </div>
 
-    <p>Nível: | Pontos:</p>
-    <p><strong></strong></p>
+    <div class="sidebar-user">
+      <details class="profile-menu">
+        <summary class="profile-button">
+          <div class="profile-button__avatar">
+            <img src="https://via.placeholder.com/48" alt="Foto de perfil de Cloud">
+          </div>
+
+          <div class="profile-button__info">
+            <strong>Cloud</strong>
+            <span>Disponível</span>
+          </div>
+        </summary>
+
+        <nav aria-label="Menu do perfil" class="profile-dropdown">
+          <ul>
+            <li><a href="perfil.html">Visualizar perfil</a></li>
+            <li><a href="editar-perfil.html">Editar perfil</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
   </aside>
 
   <main id="conteudo">
@@ -53,7 +70,6 @@
         <legend>Sala: Name xxx</legend>
 
         <div class="room-layout">
-
           <div class="room-main">
             <h4>Transmissão ao Vivo / Câmera</h4>
 
@@ -111,7 +127,6 @@
 
             <button type="button" class="btn-block">Abrir Quadro Branco</button>
           </div>
-
         </div>
       </fieldset>
 
