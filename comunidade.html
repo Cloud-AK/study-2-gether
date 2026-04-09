@@ -10,13 +10,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="stylesheet" href="style.claro.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body class="page-home">
-  <a href="#conteudo">Pular para o conteúdo</a>
+  <a href="#conteudo" class="sr-only">Pular para o conteúdo</a>
 
   <header>
+    <button id="menu-toggle" class="menu-toggle btn btn--icon" aria-label="Abrir menu">
+      ☰
+    </button>
     <h1 class="brand">
       <span class="brand__study">Study</span><span class="brand__rest">2Gether</span>
     </h1>
@@ -26,49 +33,80 @@
         <li><a href="index.html">Início</a></li>
         <li><a href="biblioteca.html">Biblioteca</a></li>
         <li><a href="salas.html">Salas</a></li>
-        <li><a href="comunidade.html">Comunidade</a></li>
+        <li><a href="comunidade.html" aria-current="page">Comunidade</a></li>
         <li><a href="calendario.html">Calendário</a></li>
       </ul>
     </nav>
   </header>
 
-  <aside>
-    <div class="sidebar-content">
-      <h3>Meu Perfil</h3>
-    </div>
+<aside class="sidebar">
+<div class="sidebar-footer">
+  <div class="user-pill-container card-soft">
+    
+    <details class="user-profile-wrapper">
+      <summary class="user-pill-summary" title="Ver opções de perfil">
+        <div class="user-avatar-small">
+          <img src="https://via.placeholder.com/32" alt="Foto">
+          <span class="status-indicator online"></span>
+        </div>
+        <div class="user-text-small">
+          <strong>Cloud</strong>
+          <span>Online</span>
+        </div>
+      </summary>
 
-    <div class="sidebar-user">
-      <details class="profile-menu">
-        <summary class="profile-button">
-          <div class="profile-button__avatar">
-            <img src="https://via.placeholder.com/48" alt="Foto de perfil de Cloud">
+      <nav class="user-popover-menu">
+        <div class="popover-header-area">
+          <a href="editar-perfil.html" class="avatar-edit-link" title="Mudar Avatar">
+            <img src="https://via.placeholder.com/64" alt="Avatar Maior">
+            <div class="edit-overlay"><span class="icon-camera"></span></div>
+          </a>
+        </div>
+        <div class="popover-content">
+          <div class="popover-user-titles">
+            <h4>Cloud</h4>
           </div>
-
-          <div class="profile-button__info">
-            <strong>Cloud</strong>
-            <span>Disponível</span>
+          <hr> 
+          <div class="popover-actions">
+            <a href="editar-perfil.html" class="btn-primary-sm">Editar Perfil</a>                        
+            <a href="sair.html" class="btn-subtle-sm" style="color: var(--danger);">Mudar de Conta</a>         
           </div>
-        </summary>
+        </div>
+      </nav>
+    </details>
 
-        <nav aria-label="Menu do perfil" class="profile-dropdown">
-          <ul>
-            <li><a href="perfil.html">Visualizar perfil</a></li>
-            <li><a href="editar-perfil.html">Editar perfil</a></li>
+    <details class="settings-wrapper">
+      <summary class="user-settings-btn" title="Configurações">
+        ⚙️
+      </summary>
+
+      <nav class="user-popover-menu settings-popover" aria-label="Links Úteis">
+        <div class="popover-content">
+          <hr>
+          <ul class="settings-links-list">
+            <li><a href="#configuracoes">Configurações</a></li>
+            <li><a href="#privacidade">Privacidade</a></li>
+            <li><a href="#termos">Termos de Uso</a></li>
+            <li><a href="#baixar-dados">Baixar meus dados</a></li>
+            <li><a href="#contato">Contato</a></li>          
           </ul>
-        </nav>
-      </details>
-    </div>
-  </aside>
+        </div>
+      </nav>
+    </details>
+
+  </div>
+</div>
+</aside>
 
   <main id="conteudo">
     <section id="duvidas" class="community">
-      <div class="section-head">
+      <header class="section-head">
         <h2>Dúvidas da Comunidade</h2>
-      </div>
+      </header>
 
       <div class="qa-layout">
         <div class="qa-compose">
-          <form action="/enviar-duvida" method="POST" enctype="multipart/form-data" class="qa-form">
+          <form action="/enviar-duvida" method="POST" enctype="multipart/form-data" class="qa-form card">
             <fieldset>
               <legend>Nova Pergunta</legend>
 
@@ -99,30 +137,31 @@
               <label for="arquivo">Anexar foto do caderno:</label>
               <input type="file" id="arquivo" name="arquivo" accept="image/*">
 
-              <button type="submit" class="btn-block">Publicar Dúvida</button>
+              <button type="submit" class="btn btn--primary btn--block">Publicar Dúvida</button>
             </fieldset>
           </form>
         </div>
 
         <div class="qa-feed">
-          <fieldset class="qa-feed-card">
-            <legend>Dúvidas Recentes</legend>
+          <section class="qa-feed-container">
+            <header class="qa-feed-header">
+               <h2>Dúvidas Recentes</h2>
+               <div class="qa-controls">
+                <label for="ordenacao">Ordenar por:</label>
+                <select id="ordenacao" name="ordenacao">
+                  <option value="relevantes">Mais relevantes</option>
+                  <option value="votadas">Mais votadas</option>
+                  <option value="recentes">Mais recentes</option>
+                </select>
+              </div>
+            </header>
 
-            <div class="qa-controls">
-              <label for="ordenacao">Ordenar por:</label>
-              <select id="ordenacao" name="ordenacao">
-                <option value="relevantes">Mais relevantes</option>
-                <option value="votadas">Mais votadas</option>
-                <option value="recentes">Mais recentes</option>
-              </select>
-            </div>
-
-            <article class="qa-post">
+            <article class="qa-post card">
               <div class="qa-post-top">
                 <span class="badge badge--open">EM ABERTO</span>
               </div>
 
-              <h4 class="qa-title">Dúvida sobre pipipipi</h4>
+              <h3 class="qa-title">Dúvida sobre pipipipi</h3>
               <p class="qa-meta">Postado por <strong>Pessoa_Dev</strong> em x matéria</p>
 
               <div class="qa-stats">
@@ -132,19 +171,19 @@
               </div>
 
               <div class="qa-actions">
-                <button type="button" aria-label="Dar upvote">▲ Upvote</button>
-                <button type="button" aria-label="Dar downvote">▼ Downvote</button>
+                <button type="button" class="btn btn--icon" aria-label="Dar upvote">▲</button>
+                <button type="button" class="btn btn--icon" aria-label="Dar downvote">▼</button>
               </div>
 
-              <button type="button" class="qa-cta">Ajudar este colega</button>
+              <button type="button" class="btn btn--secondary btn--block">Ajudar este colega</button>
             </article>
 
-            <article class="qa-post">
+            <article class="qa-post card">
               <div class="qa-post-top">
                 <span class="badge badge--solved">RESOLVIDA</span>
               </div>
 
-              <h4 class="qa-title">Outra dúvida sobre mimimi</h4>
+              <h3 class="qa-title">Outra dúvida sobre mimimi</h3>
               <p class="qa-meta">Postado por <strong>Pessoa_Aluno</strong> em y matéria</p>
 
               <div class="qa-stats">
@@ -154,31 +193,27 @@
               </div>
 
               <div class="qa-actions">
-                <button type="button" aria-label="Dar upvote">▲ Upvote</button>
-                <button type="button" aria-label="Dar downvote">▼ Downvote</button>
+                <button type="button" class="btn btn--icon" aria-label="Dar upvote">▲</button>
+                <button type="button" class="btn btn--icon" aria-label="Dar downvote">▼</button>
               </div>
 
-              <button type="button" class="qa-cta">Ver Resposta</button>
+              <button type="button" class="btn btn--outline btn--block">Ver Resposta</button>
             </article>
-          </fieldset>
+          </section>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Study2Gether - Todos os direitos reservados.</p>
 
-    <nav aria-label="Links Úteis">
-      <ul>
-        <li><a href="#privacidade">Política de Privacidade</a></li>
-        <li><a href="#termos">Termos de Uso</a></li>
-        <li><a href="#baixar-dados">Baixar meus dados</a></li>
-        <li><a href="#configuracoes">Configurações</a></li>
-        <li><a href="#excluir-conta">Excluir minha conta</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
     </nav>
   </footer>
+  <div class="overlay" id="overlay"></div>
+  <button id="voltarTopo" class="btn btn--icon" aria-label="Voltar ao topo">⬆</button>
+  <script src="script.js"></script>
+  <script src="db.js"></script>
+  <script src="controller.js"></script>
+
 </body>
 </html>
