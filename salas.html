@@ -69,27 +69,8 @@
           <hr> 
           <div class="popover-actions">
             <a href="editar-perfil.html" class="btn-primary-sm">Editar Perfil</a>                        
-            <a href="sair.html" class="btn-subtle-sm" style="color: var(--danger);">Mudar de Conta</a>         
+            <a href="sair.html" class="btn-subtle-sm" style="color: var(--danger);">Sair da Conta</a>         
           </div>
-        </div>
-      </nav>
-    </details>
-
-    <details class="settings-wrapper">
-      <summary class="user-settings-btn" title="Configurações">
-        ⚙️
-      </summary>
-
-      <nav class="user-popover-menu settings-popover" aria-label="Links Úteis">
-        <div class="popover-content">
-          <hr>
-          <ul class="settings-links-list">
-            <li><a href="#configuracoes">Configurações</a></li>
-            <li><a href="#privacidade">Privacidade</a></li>
-            <li><a href="#termos">Termos de Uso</a></li>
-            <li><a href="#baixar-dados">Baixar meus dados</a></li>
-            <li><a href="#contato">Contato</a></li>          
-          </ul>
         </div>
       </nav>
     </details>
@@ -100,109 +81,193 @@
 
   <main id="conteudo">
     <section id="sala" class="rooms-page">
-      <header class="section-head">
-        <h2>Salas de Estudo Virtuais</h2>
-      </header>
-
-      <section class="current-room card">
-        <header class="room-header">
-          <h3>Sala: Grupo de Estudos Alpha</h3>
-        </header>
-
-        <div class="room-layout">
-          <div class="room-main">
-            <h4>Transmissão ao Vivo</h4>
-            <div class="video-placeholder card-soft">
-              <p>[Espaço para WebRTC / Transmissão de Vídeo]</p>
-            </div>
-
-            <div id="pomodoro" class="pomodoro card-soft">
-              <strong>Timer Pomodoro:</strong> <span>25:00</span>
-              <button type="button" class="btn btn--primary">Iniciar Foco</button>
-            </div>
-
-            <section aria-label="Replay das sessões" class="replay">
-              <h4>Últimas sessões (Replays)</h4>
-
-              <article class="replay-item card-soft">
-                <div class="replay-info">
-                  <p><strong>Sessão:</strong> Grupo de Cálculo II</p>
-                  <p><time datetime="2026-02-20T19:00">20/02/2026 - 19:00</time></p>
-                </div>
-                <button type="button" class="btn btn--sm btn--outline">Ver replay</button>
-              </article>
-
-              <article class="replay-item card-soft">
-                <div class="replay-info">
-                  <p><strong>Sessão:</strong> Revisão de Física</p>
-                  <p><time datetime="2026-02-19T20:30">19/02/2026 - 20:30</time></p>
-                </div>
-                <button type="button" class="btn btn--sm btn--outline">Ver replay</button>
-              </article>
-
-              <p class="replay-note">
-                <small><em>Obs: replays ficam disponíveis por 7 dias.</em></small>
-              </p>
-            </section>
-          </div>
-
-          <div class="room-side">
-            <h4>Chat da Sala</h4>
-            <div class="chat-box card-soft">
-              <div class="chat-messages">
-                <p><strong>Pessoa 1:</strong> Bora focar na integral?</p>
-                <p><strong>Pessoa 2:</strong> Alguém tem o link do PDF?</p>
-              </div>
-            </div>
-
-            <h4>Minhas Metas</h4>
-            <div class="goals-container card-soft">
-              <ul class="goals">
-                <li><label><input type="checkbox"> Resolver lista 3</label></li>
-                <li><label><input type="checkbox"> Revisar capítulo 2</label></li>
-              </ul>
-            </div>
-
-            <section aria-label="Tracker de Foco" class="tracker card-soft">
-              <h4>Status de Foco</h4>
-              <p class="tracker-status"><strong>Atividade:</strong> Focando...</p>
-            </section>
-
-            <button type="button" class="btn btn--primary btn--block">Abrir Quadro Branco</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="rooms-list-section">
-        <header>
-          <h3>Outras salas disponíveis</h3>
+      
+      <section id="rooms-list-view" class="rooms-list-section">
+        <header class="section-head">
+          <h2>Salas Ativas no Momento</h2>
+          <p>Escolha uma sala, junte-se à chamada e comece a focar.</p>
         </header>
 
         <div class="rooms-grid">
           <article class="room-card card">
-            <h4>Matemática (ENEM)</h4>
-            <p>12 estudantes online • Foco: Exercícios</p>
-            <button type="button" class="btn btn--secondary btn--block">Entrar</button>
+            <div class="material-badges" style="margin-bottom: 8px;">
+              <span class="badge badge--solved">Matemática</span>
+              <span class="badge badge--open">Ao Vivo</span>
+            </div>
+            <h4>Grupo de Estudos Alpha</h4>
+            <p>12 estudantes online • Foco: Exercícios ENEM</p>
+            <button type="button" class="btn btn--primary btn--block btn-entrar-sala">Entrar na Sala</button>
           </article>
 
           <article class="room-card card">
-            <h4>Programação (Python)</h4>
-            <p>8 estudantes online • Foco: Lógica</p>
-            <button type="button" class="btn btn--secondary btn--block">Entrar</button>
+            <div class="material-badges" style="margin-bottom: 8px;">
+              <span class="badge badge--warning">Programação</span>
+              <span class="badge badge--open">Ao Vivo</span>
+            </div>
+            <h4>Hackers do Python</h4>
+            <p>8 estudantes online • Foco: Lógica de Programação</p>
+            <button type="button" class="btn btn--primary btn--block btn-entrar-sala">Entrar na Sala</button>
+          </article>
+
+          <article class="room-card card">
+            <div class="material-badges" style="margin-bottom: 8px;">
+              <span class="badge badge--mentor">Medicina</span>
+              <span class="badge badge--open">Ao Vivo</span>
+            </div>
+            <h4>Foco Total Biologia</h4>
+            <p>25 estudantes online • Foco: Silêncio / Pomodoro</p>
+            <button type="button" class="btn btn--primary btn--block btn-entrar-sala">Entrar na Sala</button>
           </article>
         </div>
       </section>
+
+      <section id="room-live-view" class="current-room card" style="display: none; padding: var(--space-md);">
+        <header class="room-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+          <h3 id="live-room-title">Sala: ...</h3>
+          <button id="btn-sair-sala" class="btn btn--outline" style="color: var(--danger); border-color: var(--danger);">Sair da Sala</button>
+        </header>
+
+        <div class="room-layout" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+          
+          <div class="room-main" style="flex: 1 1 60%; min-width: 300px;">
+            <h4 style="margin-bottom: 8px;">Transmissão / Câmeras</h4>
+            
+            <div id="jitsi-container" class="video-placeholder" style="width: 100%; aspect-ratio: 16/9; min-height: 250px; background: #000; border-radius: 8px; overflow: hidden; margin-bottom: var(--space-md);">
+            </div>
+
+            <h4 style="margin-bottom: 8px;">Quadro de Anotações</h4>
+            <div class="card-soft" style="padding: 10px;">
+              <textarea style="width: 100%; height: 100px; border: 1px solid var(--border); border-radius: 4px; padding: 10px; background: var(--panel); resize: vertical;" placeholder="Digite seus resumos, fórmulas e anotações da live aqui..."></textarea>
+            </div>
+          </div>
+
+          <div class="room-side" style="flex: 1 1 30%; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+            
+            <section class="pomodoro card-soft" style="padding: 15px;">
+              <h4 style="text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 10px;">Timer Pomodoro</h4>
+              
+              <div style="margin-bottom: 10px; display: flex; gap: 10px; align-items: center; justify-content: center;">
+                <label for="pomodoro-input" style="margin: 0;">Minutos:</label>
+                <input type="number" id="pomodoro-input" value="25" min="1" max="120" style="width: 60px; padding: 5px; border: 1px solid var(--border); border-radius: 4px;">
+              </div>
+
+              <div id="pomodoro-display" style="font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 10px; color: var(--primary);">
+                25:00
+              </div>
+
+              <div style="display: flex; gap: 10px;">
+                <button id="btn-start" class="btn btn--primary" style="flex: 1; padding: 8px;">Iniciar</button>
+                <button id="btn-reset" class="btn btn--secondary" style="flex: 1; padding: 8px;">Resetar</button>
+              </div>
+            </section>
+
+            <div class="goals-container card-soft" style="padding: 15px;">
+              <h4 style="margin-bottom: 10px;">Minhas Metas</h4>
+              
+              <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+                <input type="text" id="nova-meta-input" placeholder="Adicionar nova meta..." style="flex: 1; padding: 6px; border: 1px solid var(--border); border-radius: 4px;">
+                <button id="btn-add-meta" class="btn btn--primary" style="padding: 6px 12px; font-weight: bold;">+</button>
+              </div>
+
+              <ul id="lista-metas" class="goals" style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 8px;">
+                  <label style="margin: 0; display: flex; gap: 8px; align-items: center; cursor: pointer; font-size: 0.9rem;">
+                    <input type="checkbox" style="width: 14px; height: 14px; cursor: pointer;"> Assistir a explicação
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="chat-box card-soft" style="flex: 1; min-height: 220px; display: flex; flex-direction: column; padding: 10px;">
+              <h4 style="margin-bottom: 10px;">Chat da Sala</h4>
+              
+              <div id="chat-messages" class="chat-messages" style="flex: 1; overflow-y: auto; font-size: 0.85rem; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <p style="margin:0;"><strong>Pessoa 1:</strong> Bora focar galera!</p>
+                <p style="margin:0;"><strong>Pessoa 2:</strong> Alguém tem o link do PDF?</p>
+              </div>
+              
+              <div style="display: flex; gap: 5px;">
+                <input type="text" id="chat-input" placeholder="Digite uma mensagem..." style="flex: 1; padding: 8px; border-radius: 4px; border: 1px solid var(--border);">
+                <button id="btn-enviar-chat" class="btn btn--primary" style="padding: 8px 12px;">Enviar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </section>
   </main>
 
   <footer>
-     </nav>
   </footer>
-<div class="overlay" id="overlay"></div>
+  <div class="overlay" id="overlay"></div>
   <button id="voltarTopo" class="btn btn--icon" aria-label="Voltar ao topo">⬆</button>
+  
   <script src="script.js"></script>
   <script src="db.js"></script>
   <script src="controller.js"></script>
+  <script src="https://meet.jit.si/external_api.js"></script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // LÓGICA DAS METAS
+      const inputMeta = document.getElementById('nova-meta-input');
+      const btnAddMeta = document.getElementById('btn-add-meta');
+      const listaMetas = document.getElementById('lista-metas');
+
+      function adicionarMeta() {
+        const textoMeta = inputMeta.value.trim();
+        if (textoMeta !== '') {
+          // Cria o novo item da lista
+          const li = document.createElement('li');
+          li.style.marginBottom = '8px';
+          li.innerHTML = `
+            <label style="margin: 0; display: flex; gap: 8px; align-items: center; cursor: pointer; font-size: 0.9rem;">
+              <input type="checkbox" style="width: 14px; height: 14px; cursor: pointer;"> ${textoMeta}
+            </label>
+          `;
+          listaMetas.appendChild(li); // Adiciona à tela
+          inputMeta.value = ''; // Limpa o campo
+        }
+      }
+
+      // Adiciona meta ao clicar no "+"
+      btnAddMeta.addEventListener('click', adicionarMeta);
+      // Adiciona meta ao apertar Enter
+      inputMeta.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') adicionarMeta();
+      });
+
+
+      // LÓGICA DO CHAT
+      const inputChat = document.getElementById('chat-input');
+      const btnEnviarChat = document.getElementById('btn-enviar-chat');
+      const containerChat = document.getElementById('chat-messages');
+
+      function enviarMensagem() {
+        const textoChat = inputChat.value.trim();
+        if (textoChat !== '') {
+          // Cria o parágrafo da mensagem
+          const p = document.createElement('p');
+          p.style.margin = '0';
+          p.innerHTML = `<strong style="color: var(--primary);">Você:</strong> ${textoChat}`;
+          
+          containerChat.appendChild(p); // Adiciona a mensagem no quadro
+          inputChat.value = ''; // Limpa o campo
+          containerChat.scrollTop = containerChat.scrollHeight; // Rola o chat para baixo automaticamente
+        }
+      }
+
+      // Envia mensagem ao clicar no botão
+      btnEnviarChat.addEventListener('click', enviarMensagem);
+      // Envia mensagem ao apertar Enter
+      inputChat.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') enviarMensagem();
+      });
+
+    });
+  </script>
 </body>
 </html>
