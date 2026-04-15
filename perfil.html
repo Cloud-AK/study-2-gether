@@ -13,9 +13,12 @@
 </head>
 
 <body>
-  <a href="#conteudo">Pular para o conteúdo</a>
+  <a href="#conteudo" class="sr-only">Pular para o conteúdo</a>
 
   <header>
+    <button id="menu-toggle" class="menu-toggle btn btn--icon" aria-label="Abrir menu">
+      ☰
+    </button>
     <h1 class="brand">
       <span class="brand__study">Study</span><span class="brand__rest">2Gether</span>
     </h1>
@@ -42,7 +45,7 @@
           <span class="status-indicator online"></span>
         </div>
         <div class="user-text-small">
-          <strong>Cloud</strong>
+          <strong id="sidebar-nome">Cloud</strong>
           <span>Online</span>
         </div>
       </summary>
@@ -56,7 +59,7 @@
         </div>
         <div class="popover-content">
           <div class="popover-user-titles">
-            <h4>Cloud</h4>
+            <h4 id="popover-nome">Cloud</h4>
           </div>
           <hr> 
           <div class="popover-actions">
@@ -102,26 +105,26 @@
 
         <dl class="profile-details">
           <dt><strong>Nome:</strong></dt>
-          <dd>Cloud</dd>
+          <dd id="view-nome">Carregando...</dd>
 
           <dt><strong>Status:</strong></dt>
-          <dd>Focado</dd>
+          <dd id="view-status">Carregando...</dd>
 
           <dt><strong>Instituição:</strong></dt>
-          <dd>—</dd>
+          <dd id="view-instituicao">Carregando...</dd>
 
           <dt><strong>Curso:</strong></dt>
-          <dd>—</dd>
+          <dd id="view-curso">Carregando...</dd>
 
           <dt><strong>Semestre:</strong></dt>
-          <dd>—</dd>
+          <dd id="view-semestre">Carregando...</dd>
 
           <dt><strong>Interesses:</strong></dt>
-          <dd>Programação, Matemática</dd>
+          <dd id="view-interesses">Carregando...</dd>
         </dl>
 
-        <p>
-          <a href="editar-perfil.html" class="home-link-button">Editar perfil</a>
+        <p style="margin-top: 20px;">
+          <a href="editar-perfil.html" class="btn btn--primary">Editar perfil</a>
         </p>
       </fieldset>
 
@@ -139,6 +142,7 @@
   </footer>
   <div class="overlay" id="overlay"></div>
   <button id="voltarTopo" class="btn btn--icon" aria-label="Voltar ao topo">⬆</button>
+  
   <script src="script.js"></script>
   <script src="db.js"></script>
   <script src="controller.js"></script>
