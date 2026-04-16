@@ -130,8 +130,8 @@
       <p class="login-subtitle" id="form-title">Faça login para acessar sua conta</p>
 
       <form id="form-login">
-        <label for="nome">Nome de Usuário</label>
-        <input type="text" id="nome" placeholder="ex: Cloud" required>
+        <label for="nome">Nome de Usuário ou E-mail</label>
+        <input type="text" id="nome" placeholder="ex: Cloud ou seu@email.com" required>
 
         <div id="box-email" class="hidden">
             <label for="email">E-mail</label>
@@ -154,48 +154,9 @@
     </div>
   </div>
 
+  <script src="../js/db.js"></script>
   <script>
-    // ==========================================
-    // 1. BANCO DE DADOS (Persistência Real)
-    // ==========================================
-    const StudyDB = {
-        dbName: "Study2GetherDB",
-        dbVersion: 2,
-        storeName: "usuarios",
-        iniciar() {
-            return new Promise((resolve, reject) => {
-                const request = indexedDB.open(this.dbName, this.dbVersion);
-                request.onupgradeneeded = (event) => {
-                    const db = event.target.result;
-                    if (!db.objectStoreNames.contains(this.storeName)) {
-                        db.createObjectStore(this.storeName, { keyPath: "id", autoIncrement: true });
-                    }
-                };
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject("Erro DB: " + request.error);
-            });
-        },
-        async adicionar(item) {
-            const db = await this.iniciar();
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([this.storeName], "readwrite");
-                const store = transaction.objectStore(this.storeName);
-                const request = store.put(item);
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject("Erro salvar: " + request.error);
-            });
-        },
-        async buscarTodos() {
-            const db = await this.iniciar();
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction([this.storeName], "readonly");
-                const store = transaction.objectStore(this.storeName);
-                const request = store.getAll();
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject("Erro buscar: " + request.error);
-            });
-        }
-    };
+    const db = window.db;
 
     // ==========================================
     // 2. LÓGICA DE INTERAÇÃO (LOGIN / CADASTRO / VISITANTE)
@@ -225,7 +186,7 @@
               boxEmail.classList.remove('hidden');
               inputEmail.required = true;
               formTitle.innerText = "Crie sua conta para começar";
-              btnSubmit.innerText = "Cadastrar e Entrar";
+              btnSubmit.innerText = "Salvar e Entrar";
               footerText.innerText = "Já tem uma conta?";
               btnToggleMode.innerText = "Fazer Login";
               btnVisitante.classList.add('hidden'); // Esconde visitante no cadastro
@@ -250,15 +211,20 @@
         const email = document.getElementById('email').value.trim();
         
         try {
-          const usuarios = await StudyDB.buscarTodos();
+          const usuarios = await db.buscarTodos();
 
           if (modoCriarConta) {
               // LÓGICA DE CRIAR CONTA
-              const usuarioExiste = usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase());
+              const usuarioExiste = usuarios.find(u =>
+                  u.nome.toLowerCase() === nome.toLowerCase() ||
+                  u.email.toLowerCase() === email.toLowerCase()
+              );
               
               if (usuarioExiste) {
                   msgErro.style.display = 'block';
-                  msgErro.innerText = "Este nome de usuário já está em uso.";
+                  msgErro.innerText = usuarioExiste.email.toLowerCase() === email.toLowerCase()
+                      ? "Este e-mail já está em uso."
+                      : "Este nome de usuário já está em uso.";
                   return;
               }
 
@@ -272,26 +238,29 @@
                   dataCriacao: new Date().toLocaleDateString('pt-BR')
               };
 
-              const id = await StudyDB.adicionar(novoUsuario);
+              const id = await db.adicionar(novoUsuario);
               novoUsuario.id = id;
 
               // Emite o Crachá e entra no sistema
               localStorage.setItem('estudante_logado', JSON.stringify(novoUsuario));
               alert(`Cadastro concluído! Bem-vindo(a), ${nome}!`);
-              window.location.href = 'index.html'; // Mude para home.html se você tiver renomeado
+              window.location.href = 'home.html'; // Redirecionar para home
 
           } else {
               // LÓGICA DE LOGIN
-              // Procura se o nome e a senha batem com o banco de dados
-              const usuario = usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase() && u.senha === senha);
+              // Procura se o nome/email e a senha batem com o banco de dados
+              const usuario = usuarios.find(u =>
+                  (u.nome.toLowerCase() === nome.toLowerCase() || u.email.toLowerCase() === nome.toLowerCase()) &&
+                  u.senha === senha
+              );
 
               if (usuario) {
                   // Entra no sistema
                   localStorage.setItem('estudante_logado', JSON.stringify(usuario));
-                  window.location.href = 'index.html'; 
+                  window.location.href = 'home.html'; 
               } else {
                   msgErro.style.display = 'block';
-                  msgErro.innerText = "Nome ou senha incorretos. Verifique seus dados.";
+                  msgErro.innerText = "Nome/e-mail ou senha incorretos. Verifique seus dados.";
               }
           }
         } catch (erro) {
