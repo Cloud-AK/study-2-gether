@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     listaDuvidas.addEventListener('click', (event) => {
       const target = event.target;
       const postPai = target.closest('.qa-post');
-
+ 
       if (!postPai) return;
 
       // 1. Mostrar/Ocultar Melhor Resposta
