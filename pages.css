@@ -1,5 +1,5 @@
 /* =========================
-   Study2Gether — Pages (V2.0 Finalizado)
+   Study2Gether ? Pages (V2.0 Finalizado)
 ========================= */
 
 /* =========================
@@ -11,7 +11,7 @@
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
 }
-
+ 
 .home-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -73,10 +73,10 @@
   color: var(--text);
 }
 /* =========================
-   BIBLIOTECA EVOLUÍDA (UPLOAD & CARDS)
+   BIBLIOTECA EVOLU?DA (UPLOAD & CARDS)
 ========================= */
 
-/* --- Formulário de Postagem --- */
+/* --- Formul?rio de Postagem --- */
 .library-upload {
   padding: var(--space-lg);
   margin-bottom: var(--space-xl);
@@ -129,7 +129,7 @@
   box-shadow: 0 0 0 3px rgba(58, 123, 255, 0.15);
 }
 
-/* Grids do Formulário */
+/* Grids do Formul?rio */
 .form-grid-4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -156,7 +156,7 @@
   margin: var(--space-xl) 0;
 }
 
-/* --- Cards de Material Evoluídos --- */
+/* --- Cards de Material Evolu?dos --- */
 .library-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -202,7 +202,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limita a 2 linhas */
   -webkit-box-orient: vertical;
-  line-clamp: 2; /* Propriedade padrão moderna */
+  line-clamp: 2; /* Propriedade padr?o moderna */
   overflow: hidden;
   text-overflow: ellipsis; /* Garante os '...' no final */
 }
@@ -259,7 +259,7 @@
   border-radius: 4px;
 }
 
-/* Rodapé do Card (Botões e Interações) */
+/* Rodap? do Card (Bot?es e Intera??es) */
 .material-footer {
   display: flex;
   justify-content: space-between;
@@ -296,7 +296,7 @@
   display: grid;
   grid-template-columns: 320px 1fr; /* Esquerda: Postagem | Direita: Feed */
   gap: var(--space-xl, 24px);
-  align-items: start; /* OBRIGATÓRIO para o sticky funcionar */
+  align-items: start; /* OBRIGAT?RIO para o sticky funcionar */
 }
 
 /* Sidebar Fixa na Esquerda */
@@ -319,16 +319,45 @@
 }
 
 /* =========================
+   BIBLIOTECA: LAYOUT E SIDEBAR FIXA
+========================= */
+.library-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Esquerda: Postagem | Direita: Feed */
+  gap: var(--space-xl, 24px);
+  align-items: start; /* OBRIGATÓRIO para o sticky funcionar */
+}
+
+/* Sidebar Fixa na Esquerda */
+.library-compose {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px; /* Ajuste se o menu do site sobrepor */
+  height: max-content;
+  z-index: 10;
+}
+
+@media (max-width: 900px) {
+  .library-layout {
+    grid-template-columns: 1fr; /* Em telas menores, fica um embaixo do outro */
+  }
+  .library-compose {
+    position: relative;
+    top: 0;
+  }
+}
+
+/* =========================
    BORDAS CLARAS E SUAVES
 ========================= */
 .card-soft {
-  background: #ffffff;
-  border: 1px solid #e2e8f0; /* Borda bem clarinha */
-  border-radius: 12px; /* Mais arredondado */
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Sombra muito suave */
-  margin-bottom: 20px;
-  transition: box-shadow 0.2s ease;
+  background: var(--panel, #ffffff);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: var(--r-md, 8px);
+  padding: var(--space-lg, 20px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: var(--space-md, 16px);
+  transition: all 0.2s ease;
 }
 .card-soft:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
@@ -358,7 +387,7 @@
 .badge--mentor { background-color: #9933FF; }   /* Roxo Vivo */
 
 /* =========================
-   INTERAÇÕES E RESPOSTAS
+   INTERA??ES E RESPOSTAS
 ========================= */
 .qa-body {
   font-size: 0.95rem;
@@ -375,7 +404,7 @@
   padding-top: 12px;
 }
 
-/* Botões de exibição */
+/* Bot?es de exibi??o */
 .answer-controls button {
   background: none;
   border: none;
@@ -412,7 +441,7 @@
   font-size: 0.9rem;
 }
 
-/* Botão Curtir (Like) */
+/* Bot?o Curtir (Like) */
 .btn-like {
   background: none;
   border: 1px solid #eaeaea;
@@ -446,19 +475,6 @@
   border-radius: 6px;
   font-family: inherit;
 }
-/* =========================
-   VISUAL DAS CAIXAS
-========================= */
-.card-soft {
-  background: var(--panel, #ffffff);
-  border: 1px solid var(--border, #e0e0e0);
-  border-radius: var(--r-md, 8px);
-  padding: var(--space-lg, 20px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  margin-bottom: var(--space-md, 16px);
-  transition: all 0.2s ease;
-}
-
 .qa-post {
   cursor: pointer;
   border-left: 4px solid var(--brand-blue, #4A90E2);
@@ -471,7 +487,7 @@
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
-/* Espaço de Respostas */
+/* Espa?o de Respostas */
 .qa-answer-box {
   margin-top: 15px;
   background: var(--panel-soft, #f8f9fa);
@@ -505,7 +521,7 @@
   font-family: inherit;
 }
 .form-resposta button {
-  align-self: flex-end; /* Joga o botão de enviar resposta para a direita */
+  align-self: flex-end; /* Joga o bot?o de enviar resposta para a direita */
 }
 /* =========================
    SALAS DE ESTUDO
@@ -541,7 +557,7 @@
 }
 
 /* =========================
-   CALENDÁRIO EVOLUÍDO
+   CALEND?RIO EVOLU?DO
 ========================= */
 .calendar-layout {
   display: grid;
@@ -556,15 +572,6 @@
   }
 }
 
-/* Remover bordas escuras e usar um card suave */
-.card-soft {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: var(--space-lg);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-}
-
 .card-title {
   margin-bottom: var(--space-md);
   font-size: var(--ft-lg);
@@ -573,7 +580,7 @@
   padding-bottom: 8px;
 }
 
-/* Calendário Visual (Grade) */
+/* Calend?rio Visual (Grade) */
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -636,7 +643,7 @@
   text-overflow: ellipsis;
 }
 
-/* Formulário Organizado */
+/* Formul?rio Organizado */
 .calendar-form {
   display: flex;
   flex-direction: column;
@@ -674,7 +681,7 @@
   outline: none;
 }
 
-/* Lista de Eventos e Sistema de Concluído */
+/* Lista de Eventos e Sistema de Conclu?do */
 .calendar-sidebar {
   display: flex;
   flex-direction: column;
@@ -693,7 +700,7 @@
   transition: all 0.3s ease;
 }
 
-/* Estado de CONCLUÍDO */
+/* Estado de CONCLU?DO */
 .calendar-item.concluido {
   opacity: 0.5;
   border-left-color: var(--brand-green, #2ecc71);
