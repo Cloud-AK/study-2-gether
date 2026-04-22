@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         await db.iniciar();
 
         let meuPerfil = await db.buscarPorId(MEU_ID, STORE_USUARIOS);
-        if (!meuPerfil) {
+        if (!meuPerfil) { 
             meuPerfil = {
                 id: MEU_ID,
                 nome: "Visitante",
