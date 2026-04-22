@@ -39,7 +39,7 @@ const StudyDB = {
                     }
 
                     this._criarIndices(storeName, store);
-                });
+                }); 
             };
 
             request.onsuccess = () => {
