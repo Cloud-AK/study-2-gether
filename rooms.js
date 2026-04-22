@@ -11,7 +11,7 @@ if (listaMetas) {
       textoLabel.style.textDecoration = event.target.checked ? 'line-through' : 'none';
       textoLabel.style.color = event.target.checked ? 'var(--text-2)' : 'var(--text)';
     }
-  });
+  }); 
 }
 
 // ⏱️ TRACKER POMODORO REAL
